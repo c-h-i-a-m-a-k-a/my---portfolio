@@ -1,8 +1,8 @@
-# Google Student Training in Engineering Program
+This directory is where you'll write all of your code!
 
-This repo contains the projects that Chiamaka worked on in her first half of STEP, including walthroughs and a portfolio page.
+By default it contains a barebones web app. To run a local server, execute this
+command:
 
-The week 2 assignment was to develop a website that served as portfolio
-The website includes, past projects, hobbies, and interests 
-
-This work is based on the [Google Software Product Sprint](https://g.co/softwareproductsprint) program.
+```bash
+mvn package appengine:run
+```
