@@ -1,10 +1,225 @@
- 
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+p {
+  font-size: 40px
+}
+#logo{
+  text-align: center;
+  background-image: url("https://media.giphy.com/media/4rwQehrSJTS6s/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#lll {
+  font-size: 170px;
+  text-transform: uppercase;
+  text-shadow: 3px 0 #928e8e, 0 3px #928e8e, 3px 0 #928e8e, 0 3px #928e8e;
+  font-family: 'Cinzel Decorative', cursive;
+  
+}
+#c1{
+  color: rgb(115, 0, 255);
+}
+#c12{
+    color: rgb(115, 0, 255);
+    font-size: 120px;
+}
+#c2{
+  color: rgb(142, 51, 253);
+}
+#c23 {
+  color: rgb(174, 76, 255);
+  font-size: 120px;
+}
+#c3{
+  color: rgb(180, 104, 242);
+}
+#c4 {
+  font-size: 100px;
+   color: rgb(203, 140, 255);
+}
+#c45 {
+  font-size: 80px;
+  color: rgb(209, 156, 252);
+}
+#c5{
+    color: rgb(221, 181, 255);
+}
+#c6{
+  color: rgb(226, 201, 255);
+  font-size: 120px;
+}
+h1 {
+  display: inline-block;
+}
+#subhead {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Cinzel Decorative', cursive;
+  color: white;
+  background-color:  black;
+}
+body {
+  margin: 0;
+    padding: 0;
+  background-repeat: no-repeat;
+   background-size:     cover; 
+   background-color: rgb(226, 201, 255);
+}
+/* ul {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  list-style: none;
+  display: inline;
+  font-size: 50px;
+  margin-top: 0;
+  text-align: left;
+  
+  float: left;
+} */
+
+#lists {
+  text-align: center;
+}
+#after1 {
+  font-size: 200px;
+  top:620px;
+  
+  color: white;
+  text-align: center;
+  background-image: url("http://images.says.com/uploads/story_source/source_image/512089/3e80.gif");
+  padding-top: 60px;
+  padding-bottom: 260px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Miss Fajardose', cursive;
+}
+#after2 {
+  font-size: 200px;
+  top:720px;
+  font-family: 'Princess Sofia', cursive;
+  color: white;
+  background-repeat: no-repeat;
+   background-size:     cover; 
+  background-image: url("https://fsmedia.imgix.net/76/45/f5/ef/0118/4709/83af/f272344232cf/coral-reef.gif?rect=0%2C28%2C448%2C224&auto=format%2Ccompress&w=448&gifq=35");
+  padding-top: 230px;
+  padding-bottom: 230px;
+}
+.about:hover {
+  border-style: solid double;
+  padding-top: 190px;
+  padding-bottom: 190px;
+  padding-left: 230px;
+  padding-right: 230px;
+}
+.projects:hover {
+  border-style: solid double;
+  padding-top: 30px;
+  padding-bottom: 190px;
+  padding-left: 230px;
+  padding-right: 230px;
+}
+.fifth:hover {
+  border-style: solid double;
+  padding-top: 190px;
+  padding-bottom: 190px;
+  padding-left: 230px;
+  padding-right: 230px;
+}
+.other:hover {
+  border-style: solid double;
+  padding-top: 190px;
+  padding-bottom: 190px;
+  padding-left: 230px;
+  padding-right: 230px;
 }
 
-#greeting-container {
-  margin-top: 20px;
+
+#after4 {
+  font-family: 'Cinzel Decorative', cursive;
+  text-align: center;
+  font-size: 100px;
+  top:1220px;
+  padding-top: 300px;
+  padding-bottom: 180px;
+  background-image: url(https://media.giphy.com/media/Yy26NRbpB9lDi/giphy.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: purple;
+  
+}
+#after5 {
+font-size: 70px;
+  top:1420px;
+  text-align: center;
+  font-family: 'Libre Barcode 39 Extended Text', cursive;
+  color: white;
+  background-image: url("https://hips.hearstapps.com/hbz.h-cdn.co/assets/16/26/1467503389-breakfast-at-tiffanys.gif?fill=320:199&resize=320:*");
+   padding-top: 600px;
+  padding-bottom: 20px;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+#after5:hover {
+  image: url("http://www.clker.com/cliparts/y/G/l/h/i/R/decorative-white-border-hi.png");
+}
+a:link, a:visited {
+  color:white;
+  text-decoration: none;
+}
+#image1 {
+  margin-left: auto;
+    margin-right: auto;
+}
+#about2 {
+  font-family: 'Poiret One', cursive;
+}
+#aboutme1 {
+  font-family: 'Poiret One', cursive;
+  color:white;
+}
+#art {
+  background-color:  black
+
+}
+ul{
+  display: inline;
+  text-align: center;
+}
+li {
+  font-size: 20px;
+  text-align: center;
+   display: inline-block;
+}
+li:hover {
+  background-color: white;
+  color: black;
+}
+header {
+text-align: center;
+text-transform: uppercase;
+position: fixed;
+top: 0px;
+z-index: 10;
+background-color:black;
+color: white;
+display: inline;
+}
+#desc {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Cinzel Decorative', cursive;
+  color: white;
+  background-color:  black;
+}
+#websoon {
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Cinzel Decorative', cursive;
+  color: white;
+  background-color:  black;
+
+}
+#fashimg {
+
+  text-align: center
+  
+
 }
