@@ -3,6 +3,8 @@
 This repo contains the projects you'll work on for the first half of STEP.
 This work is based on the [Google Software Product Sprint](https://g.co/softwareproductsprint) program.
 
+adding on git hub
+
 To get started:
 
 - Login to [Google Cloud Shell](https://ssh.cloud.google.com/cloudshell/editor)
