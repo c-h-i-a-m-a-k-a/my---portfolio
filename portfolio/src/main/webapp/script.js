@@ -23,9 +23,9 @@ var images = [];	// Images Array
 var time = 3000;	// Time Between Switch
 	 
 // Image List
-images[0] = "http://lorempixel.com/400/200/animals";
-images[1] = "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg";
-images[2] = "https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png";
+images[0] = "./images/lavender.jpg";
+images[1] = "./images/school.jpg";
+images[2] = "./images/writing.jpg";
 
 // Change Image
 function changeImg(){
