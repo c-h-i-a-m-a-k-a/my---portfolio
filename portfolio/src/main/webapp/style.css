@@ -7,7 +7,7 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
 }
-#lll {
+#altletters {
   font-size: 170px;
   text-transform: uppercase;
   text-shadow: 3px 0 #30075f, 0 3px #30075f, 3px 0 #30075f, 0 3px #30075f;
@@ -67,7 +67,7 @@ body {
 #lists {
   text-align: center;
 }
-#after1 {
+#projecttext {
   font-size: 200px;
   top:620px;
   
@@ -80,7 +80,7 @@ body {
   background-size: cover;
   font-family: 'Miss Fajardose', cursive;
 }
-#after2 {
+#abouttext {
   font-size: 200px;
   top:720px;
   font-family: 'Princess Sofia', cursive;
@@ -134,7 +134,7 @@ a:link, a:visited {
   font-family: 'Poiret One', cursive;
   color:white;
 }
-#art {
+.artbody {
   background-color:  black
 
 }
