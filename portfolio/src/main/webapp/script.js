@@ -41,7 +41,7 @@ function changeImg(){
 	}
 
 	// Run function every x seconds
-	setTimeout("changeImg()", time);
+	//setTimeout("changeImg()", time);
 }
 
 // Run function when page loads
