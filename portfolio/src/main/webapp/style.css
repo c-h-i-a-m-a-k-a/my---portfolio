@@ -63,17 +63,6 @@ body {
    background-size:     cover; 
    background-color: rgb(226, 201, 255);
 }
-/* ul {
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  list-style: none;
-  display: inline;
-  font-size: 50px;
-  margin-top: 0;
-  text-align: left;
-  
-  float: left;
-} */
 
 #lists {
   text-align: center;
@@ -102,37 +91,9 @@ body {
   padding-top: 230px;
   padding-bottom: 230px;
 }
-.about:hover {
-  border-style: solid double;
-  padding-top: 190px;
-  padding-bottom: 190px;
-  padding-left: 230px;
-  padding-right: 230px;
-}
-.projects:hover {
-  border-style: solid double;
-  padding-top: 30px;
-  padding-bottom: 190px;
-  padding-left: 230px;
-  padding-right: 230px;
-}
-.fifth:hover {
-  border-style: solid double;
-  padding-top: 190px;
-  padding-bottom: 190px;
-  padding-left: 230px;
-  padding-right: 230px;
-}
-.other:hover {
-  border-style: solid double;
-  padding-top: 190px;
-  padding-bottom: 190px;
-  padding-left: 230px;
-  padding-right: 230px;
-}
 
 
-#after4 {
+#goodbye {
   font-family: 'Cinzel Decorative', cursive;
   text-align: center;
   font-size: 100px;
@@ -142,10 +103,10 @@ body {
   background-image: url(https://media.giphy.com/media/Yy26NRbpB9lDi/giphy.gif);
   background-repeat: no-repeat;
   background-size: cover;
-  color: purple;
+  color: white;
   
 }
-#after5 {
+#arttext {
 font-size: 70px;
   top:1420px;
   text-align: center;
@@ -157,9 +118,7 @@ font-size: 70px;
   background-repeat: no-repeat;
   background-size: cover
 }
-#after5:hover {
-  image: url("http://www.clker.com/cliparts/y/G/l/h/i/R/decorative-white-border-hi.png");
-}
+
 a:link, a:visited {
   color:white;
   text-decoration: none;
