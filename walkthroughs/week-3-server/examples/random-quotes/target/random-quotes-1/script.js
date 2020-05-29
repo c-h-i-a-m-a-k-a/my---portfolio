@@ -17,7 +17,7 @@
  */
 
 function getGreeting(){
-    fetch('/greetings').then(response => response.text()).then((greeting) => {
+    fetch('/data').then(response => response.text()).then((greeting) => {
     document.getElementById('greeting-container').innerText = greeting;
     });
 }
