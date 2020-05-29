@@ -15,6 +15,13 @@
 /**
  * Fetches a random quote from the server and adds it to the DOM.
  */
+
+function getGreeting(){
+    fetch('/data').then(response => response.text()).then((greeting) => {
+    document.getElementById('greeting-container').innerText = greeting;
+    });
+}
+
 function getRandomQuote() {
   console.log('Fetching a random quote.');
 
