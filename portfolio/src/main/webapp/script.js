@@ -50,9 +50,10 @@ window.onload=changeImg;
 
 
 //wk3pt2
-function getRandomGreeting(){
-    fetch('/greet').then(response => response.text()).then((greeting) => {
+function getGreeting() {
+    console.log("Running Greeting function");
+  fetch('/data').then(response => response.text()).then((greeting) => {
     document.getElementById('greeting-container').innerText = greeting;
-    });
+  });
 }
 
