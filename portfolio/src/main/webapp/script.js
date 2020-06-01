@@ -17,7 +17,8 @@
 /**
  * Adds a random greeting to the page.
  */
- 
+
+// found in tutorial from https://www.youtube.com/watch?v=4YQ4svkETS0&t=7s
 var i = 0; 			// Start Point
 var images = [];	// Images Array
 var time = 3000;	// Time Between Switch
@@ -46,3 +47,12 @@ function changeImg(){
 
 // Run function when page loads
 window.onload=changeImg;
+
+
+//wk3pt2
+function getRandomGreeting(){
+    fetch('/greet').then(response => response.text()).then((greeting) => {
+    document.getElementById('greeting-container').innerText = greeting;
+    });
+}
+
