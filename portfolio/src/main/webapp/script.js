@@ -51,9 +51,12 @@ window.onload=changeImg;
 
 //wk3pt2
 function getGreeting() {
-    console.log("Running Greeting function");
   fetch('/data').then(response => response.text()).then((greeting) => {
     document.getElementById('greeting-container').innerText = greeting;
   });
 }
 
+//wk3pt3
+function getArray(){
+    console.log(fetch('/data').then(response => response.text()))
+}
