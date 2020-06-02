@@ -49,14 +49,10 @@ function changeImg(){
 window.onload=changeImg;
 
 
-//wk3pt2
-function getGreeting() {
-  fetch('/data').then(response => response.text()).then((greeting) => {
-    document.getElementById('greeting-container').innerText = greeting;
+//wk3pt2 + 3
+function getText() {
+  fetch('/data').then(response => response.text()).then((text) => {
+    document.getElementById('text-container').innerText = text;
   });
 }
 
-//wk3pt3
-function getArray(){
-    console.log(fetch('/data').then(response => response.text()))
-}
