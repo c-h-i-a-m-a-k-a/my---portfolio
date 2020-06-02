@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Fetches a random quote from the server and adds it to the DOM
-
+/**
+ * Fetches a random quote from the server and adds it to the DOM.
+ */
 function getGreeting(){
     fetch('/data').then(response => response.text()).then((greeting) => {
-
     document.getElementById('greeting-container').innerText = greeting;
     });
 }
@@ -76,4 +76,4 @@ async function getRandomQuoteUsingAsyncAwait() {
   const response = await fetch('/random-quote');
   const quote = await response.text();
   document.getElementById('quote-container').innerText = quote;
-};
+}
