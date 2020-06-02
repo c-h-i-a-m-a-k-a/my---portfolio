@@ -13,7 +13,9 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
-
+import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,16 +25,27 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  messages = ArrayList<String>
-  messages[0] = "Can you see me?"
-  messages[1] = "Does this text appear?"
-  messages[2] = "Are all the messages being displayed?"
+
+    private List<String> messages;
+
+    @Override
+    public void init() {
+    messages = new ArrayList<>();
+    messages.add("Can you see me?");
+    messages.add("Does this text appear?");
+    messages.add("Are all the messages being displayed?");
+  }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
     response.setContentType("text/html;");
     response.getWriter().println("Hello Chiamaka!");
-    return String json = new Gson().toJson(messages)
+
+    Gson gson = new Gson();
+    String json = gson.toJson(messages);
+    return json;
   }
  
 }
