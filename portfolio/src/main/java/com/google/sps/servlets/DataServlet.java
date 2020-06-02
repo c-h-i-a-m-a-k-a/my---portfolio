@@ -26,26 +26,27 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-    private List<String> messages;
-
-    @Override
-    public void init() {
-    messages = new ArrayList<>();
-    messages.add("Can you see me?");
-    messages.add("Does this text appear?");
-    messages.add("Are all the messages being displayed?");
-  }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+    ArrayList<String> messages = new ArrayList<String>();
+    messages.add("Can you see me?");
+    messages.add("Does this text appear?");
+    messages.add("Are all the messages being displayed?");
+    
+    String json = convertToJsonUsingGson(messages);
 
-    response.setContentType("text/html;");
-    response.getWriter().println("Hello Chiamaka!");
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
 
+  }
+
+    private String convertToJsonUsingGson(ArrayList<String> messages) {
     Gson gson = new Gson();
     String json = gson.toJson(messages);
     return json;
   }
+
  
 }
