@@ -56,3 +56,22 @@ function getText() {
   });
 }
 
+//wk3pt4
+function getComments() {
+  fetch('/comments').then(response => response.json()).then((game) => {
+
+    // Build the list of history entries.
+    const historyEl = document.getElementById('history');
+    history.forEach((line) => {
+      historyEl.appendChild(createListElement(line));
+    });
+  });
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
+

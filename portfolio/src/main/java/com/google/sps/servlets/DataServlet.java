@@ -57,33 +57,33 @@ public class DataServlet extends HttpServlet {
 @WebServlet("/comments")
 public class DataServlet extends HttpServlet {
 
+    private CommentSection section = new CommentSection();
+
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    
-    ArrayList<String> comments= new ArrayList<String>();
-    
-    String content = getContent(request);
-    comments.add(content);
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    response.setContentType("application/json");
+    String json = new Gson().toJson(section);
+    response.getWriter().println(json);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    // Get the input from the form.
+    int input = getContent(request);
+
+    section.takePlayerTurn(content);
 
     // Redirect back to the HTML page.
     response.sendRedirect("/index.html");
   }
 
-    private String getContent(HttpServletRequest request) {
-    
-    String commentString = request.getParameter("input-string");
+  /** Returns the choice entered by the player, or -1 if the choice was invalid. */
+  private String getContent(HttpServletRequest request) {
+    // Get the input from the form.
+    String contentString = request.getParameter("input-string");
 
-    return commentString;
-
-    }
-
-    
-    private String convertToJsonUsingGson(ArrayList<String> messages) {
-    Gson gson = new Gson();
-    String json = gson.toJson(messages);
-    return json;
+    return contentString;
   }
-
-
- 
 }
+    
