@@ -43,20 +43,6 @@ public class DataServlet extends HttpServlet {
 
   }
 
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    
-    ArrayList<String> comments= new ArrayList<String>();
-    
-    String content = getContent(request);
-    comments.add(content);
-
-
-    takeContent(comments);
-
-    // Redirect back to the HTML page.
-    response.sendRedirect("/index.html");
-  }
 
 
     private String convertToJsonUsingGson(ArrayList<String> messages) {
@@ -64,13 +50,40 @@ public class DataServlet extends HttpServlet {
     String json = gson.toJson(messages);
     return json;
   }
+
+
+ 
+}
+@WebServlet("/comments")
+public class DataServlet extends HttpServlet {
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    
+    ArrayList<String> comments= new ArrayList<String>();
+    
+    String content = getContent(request);
+    comments.add(content);
+
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+  }
+
     private String getContent(HttpServletRequest request) {
     
     String commentString = request.getParameter("input-string");
 
     return commentString;
-    
+
     }
+
+    
+    private String convertToJsonUsingGson(ArrayList<String> messages) {
+    Gson gson = new Gson();
+    String json = gson.toJson(messages);
+    return json;
+  }
+
 
  
 }
