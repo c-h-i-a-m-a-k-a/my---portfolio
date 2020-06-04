@@ -42,37 +42,12 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println("Hello Chiamaka");
 
   }
-  
-  @Override
-  public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-
-    // Get the input from the form.
-    String input = getContent(req);
-
-    ArrayList<String> comments = new ArrayList<String>();
-    comments.add(input);
-
-    // Redirect back to the HTML page.
-    res.setContentType("text/html;");
-    String json = convertToJsonUsingGson(comments);
-    res.getWriter().println(json);
-    res.sendRedirect("/index.html");
-  }
-
-
 
     private String convertToJsonUsingGson(ArrayList<String> messages) {
     Gson gson = new Gson();
     String json = gson.toJson(messages);
     return json;
   }
-    private String getContent(HttpServletRequest req) {
-    // Get the input from the form.
-    String contentString = req.getParameter("input-string");
-
-    return contentString;
-  }
 
  
 }
- 
