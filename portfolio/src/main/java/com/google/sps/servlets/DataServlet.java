@@ -42,6 +42,22 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println("Hello Chiamaka");
 
   }
+  
+  @Override
+  public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+
+    // Get the input from the form.
+    String input = getContent(req);
+
+    ArrayList<String> comments = new ArrayList<String>();
+    comments.add(input);
+
+    // Redirect back to the HTML page.
+    res.setContentType("text/html;");
+    String json = convertToJsonUsingGson(comments);
+    res.getWriter().println(json);
+    res.sendRedirect("/index.html");
+  }
 
 
 
@@ -50,40 +66,13 @@ public class DataServlet extends HttpServlet {
     String json = gson.toJson(messages);
     return json;
   }
-
-
- 
-}
-@WebServlet("/comments")
-public class DataServlet extends HttpServlet {
-
-    private CommentSection section = new CommentSection();
-
-    @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("application/json");
-    String json = new Gson().toJson(section);
-    response.getWriter().println(json);
-  }
-
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    private String getContent(HttpServletRequest req) {
     // Get the input from the form.
-    int input = getContent(request);
-
-    section.takePlayerTurn(content);
-
-    // Redirect back to the HTML page.
-    response.sendRedirect("/index.html");
-  }
-
-  /** Returns the choice entered by the player, or -1 if the choice was invalid. */
-  private String getContent(HttpServletRequest request) {
-    // Get the input from the form.
-    String contentString = request.getParameter("input-string");
+    String contentString = req.getParameter("input-string");
 
     return contentString;
   }
+
+ 
 }
-    
+ 
