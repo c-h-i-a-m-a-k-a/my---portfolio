@@ -56,22 +56,3 @@ function getText() {
   });
 }
 
-//wk3pt4
-function getComments() {
-  fetch('/data').then(response => response.json()).then((section) => {
-
-    // Build the list of history entries.
-    const historyEl = document.getElementById('history');
-    section.history.forEach((line) => {
-      historyEl.appendChild(createListElement(line));
-    });
-  });
-}
-
-/** Creates an <li> element containing text. */
-function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
-}
-
