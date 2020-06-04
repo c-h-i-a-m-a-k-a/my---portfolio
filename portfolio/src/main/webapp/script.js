@@ -58,11 +58,11 @@ function getText() {
 
 //wk3pt4
 function getComments() {
-  fetch('/comments').then(response => response.json()).then((game) => {
+  fetch('/data').then(response => response.json()).then((section) => {
 
     // Build the list of history entries.
     const historyEl = document.getElementById('history');
-    history.forEach((line) => {
+    section.history.forEach((line) => {
       historyEl.appendChild(createListElement(line));
     });
   });
