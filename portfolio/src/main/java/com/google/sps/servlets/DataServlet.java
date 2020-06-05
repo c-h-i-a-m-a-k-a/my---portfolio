@@ -76,12 +76,8 @@ public class DataServlet extends HttpServlet {
     }
 
     // Redirect back to the HTML page.
-    //Commenting out temporarrily to test if comments will load
-    //res.sendRedirect("/index.html");
-    Gson gson = new Gson();
 
-    res.setContentType("text/html;");
-    res.getWriter().println(gson.toJson(comments));
+    res.sendRedirect("/index.html");
   }
 
 
