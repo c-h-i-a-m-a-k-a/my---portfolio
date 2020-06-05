@@ -16,7 +16,6 @@ package com.google.sps.servlets;
 
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -53,7 +52,6 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException 
   
-  
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
     // Get the input from the form.
@@ -74,11 +72,8 @@ public class DataServlet extends HttpServlet {
     }
 
     // Redirect back to the HTML page.
-
     res.sendRedirect("/index.html");
   }
-
-
 
     private String convertToJsonUsingGson(ArrayList<String> messages) {
     Gson gson = new Gson();
@@ -88,4 +83,3 @@ public class DataServlet extends HttpServlet {
 
  
 }
-
