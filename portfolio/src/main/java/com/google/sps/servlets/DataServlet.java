@@ -50,7 +50,7 @@ public class DataServlet extends HttpServlet {
   }
   
   @Override
-  public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException 
+  public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException{
   
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
@@ -79,6 +79,13 @@ public class DataServlet extends HttpServlet {
     Gson gson = new Gson();
     String json = gson.toJson(messages);
     return json;
+  }
+
+  private String getContent(HttpServletRequest req) {
+    // Get the input from the form.
+    String contentString = req.getParameter("input-string");
+
+    return contentString;
   }
 
  

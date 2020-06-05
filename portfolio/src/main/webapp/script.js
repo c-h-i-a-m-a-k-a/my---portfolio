@@ -55,5 +55,3 @@ function getText() {
     document.getElementById('text-container').innerText = text;
   });
 }
-
-
