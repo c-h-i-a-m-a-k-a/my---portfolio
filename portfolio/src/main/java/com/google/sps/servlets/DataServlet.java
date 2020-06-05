@@ -69,9 +69,7 @@ public class DataServlet extends HttpServlet {
 
     ArrayList<String> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
-      String content = (String) entity.getProperty("content");
-      String comment = new String(content);
-      System.out.println(comment);
+      String comment = (String) entity.getProperty("content");
       comments.add(comment);
     }
 
