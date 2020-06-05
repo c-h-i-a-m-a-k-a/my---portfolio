@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -60,8 +63,24 @@ public class DataServlet extends HttpServlet {
 
     datastore.put(commentEntity);
 
+    Query query = new Query("Comment");
+    PreparedQuery results = datastore.prepare(query);
+
+    ArrayList<String> comments = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+      String content = (String) entity.getProperty("content");
+      String comment = new String(content);
+      System.out.println(comment);
+      comments.add(comment);
+    }
+
     // Redirect back to the HTML page.
-    res.sendRedirect("/index.html");
+    //Commenting out temporarrily to test if comments will load
+    //res.sendRedirect("/index.html");
+    Gson gson = new Gson();
+
+    res.setContentType("text/html;");
+    res.getWriter().println(gson.toJson(comments));
   }
 
 
