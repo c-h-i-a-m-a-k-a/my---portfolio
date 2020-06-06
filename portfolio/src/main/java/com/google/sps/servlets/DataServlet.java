@@ -43,6 +43,17 @@ public class DataServlet extends HttpServlet {
     
     String json = convertToJsonUsingGson(messages);
 
+    String maxString = request.getParameter("max");
+
+    // Convert max input to an int.
+    int maxNum;
+    try {
+      maxNum = Integer.parseInt(maxString);
+    } catch (NumberFormatException e) {
+      System.err.println("Could not convert to int: " + maxString);
+      return -1;
+    }
+
     response.setContentType("text/html;");
     response.getWriter().println(json);
     response.getWriter().println("Hello Chiamaka");
