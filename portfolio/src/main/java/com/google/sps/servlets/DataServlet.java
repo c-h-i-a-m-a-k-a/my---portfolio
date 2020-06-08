@@ -32,7 +32,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
@@ -52,54 +51,41 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println("Hello Chiamaka");
 
     **/
-    
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-    String maxString = request.getParameter("max");
+    Query query = new Query("Comment");
+    PreparedQuery results = datastore.prepare(query);
 
-    // Convert max input to an int.
-    int maxNum;
+    ArrayList<String> comments = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+      String comment = (String) entity.getProperty("content");
+      comments.add(comment);
 
-    maxNum = Integer.parseInt(maxString);
+    }
+
 
     String conversion = convertToJsonUsingGson(comments);
-    
     response.setContentType("application/json");
     response.getWriter().println(conversion);
 
   }
   
   @Override
-  public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException{
-  
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
 
     // Get the input from the form.
-    String input = getContent(req);
+    String input = getContent(request);
 
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("content", input);
 
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
     datastore.put(commentEntity);
 
-    Query query = new Query("Comment");
-    PreparedQuery results = datastore.prepare(query);
-
-    int index  = 0;
-
-    ArrayList<String> comments = new ArrayList<>();
-    for (Entity entity : results.asIterable()) {
-      if index  <= maxNum {
-      String comment = (String) entity.getProperty("content");
-      comments.add(comment);
-
-      index ++;
-
-      }
-
-    }
-
     // Redirect back to the HTML page.
-    res.setContentType("application/json")
+
+    response.sendRedirect("/index.html");
   }
 
     private String convertToJsonUsingGson(ArrayList<String> messages) {
@@ -108,9 +94,9 @@ public class DataServlet extends HttpServlet {
     return json;
   }
 
-  private String getContent(HttpServletRequest req) {
+  private String getContent(HttpServletRequest request) {
     // Get the input from the form.
-    String contentString = req.getParameter("input-string");
+    String contentString = request.getParameter("input-string");
 
     return contentString;
   }
