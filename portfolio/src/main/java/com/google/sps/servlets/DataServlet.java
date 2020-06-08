@@ -38,6 +38,8 @@ public class DataServlet extends HttpServlet {
     
     /**
 
+    I don't know if we should delete the earlier parts
+
     ArrayList<String> messages = new ArrayList<String>();
     messages.add("Can you see me?");
     messages.add("Does this text appear?");
@@ -59,6 +61,11 @@ public class DataServlet extends HttpServlet {
 
     maxNum = Integer.parseInt(maxString);
 
+    String conversion = convertToJsonUsingGson(comments);
+    
+    response.setContentType("application/json");
+    response.getWriter().println(conversion);
+
   }
   
   @Override
@@ -77,14 +84,22 @@ public class DataServlet extends HttpServlet {
     Query query = new Query("Comment");
     PreparedQuery results = datastore.prepare(query);
 
+    int index  = 0;
+
     ArrayList<String> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
+      if index  <= maxNum {
       String comment = (String) entity.getProperty("content");
       comments.add(comment);
+
+      index ++;
+
+      }
+
     }
 
     // Redirect back to the HTML page.
-    res.sendRedirect("/index.html");
+    res.setContentType("application/json")
   }
 
     private String convertToJsonUsingGson(ArrayList<String> messages) {
