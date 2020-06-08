@@ -40,10 +40,12 @@
       <p> 
       </p>
     </div>
+        <!--
         <p>Click here to see a greeting and an Array</p>
         <button onclick="getText()">Fetch Text!</button>
         <br/><br/>
         <div id="text-container"></div>
+        -->
         <br/><br/>
         <br/><br/>
         <br/><br/>
@@ -51,10 +53,22 @@
         <form action="/data" method="POST">
 
         <p>Comments:</p>
-            <input type="text" name="input-string" max="6">
+
+            <input type="text" name="input-string">
             <input type="submit" />
+
         </form>
         <br/><br/>
+
+        <form>
+
+        <p>Enter a maximum number of comments:</p>
+
+            <input type = "number" name="max" id = "max">
+            <input type="submit" />
+
+        </form>
+
         <br/><br/>
 
         <button onclick="getComments()"> Display Comments </button>
@@ -69,10 +83,11 @@
 
         <ul id="history"></ul>
         <br/><br/>
-
+        <!--
         <audio autoplay>
             <source src="./music/indexmusic.mp3" type = "audio/mpeg">
         </audio>
+        -->
 
   </body>
 </html>

@@ -65,12 +65,12 @@ function test(){
 
 
 function getComments() {
-  fetch('/data').then(response => response.text()).then((comments) => {
-
+  
+  const maxval = document.getElementById('max').value;
+  fetch('/data?max='+maxval).then(response => response.text()).then((comments) => {
+  document.getElementById("test").innerText = comments;
   comments = comments.replace("[","").replace("]","").split(",");
-
   for (i = 0; i<comments.length; i++) {
-
     document.getElementById("history").appendChild(createListElement(comments[i]));
   }
 
@@ -84,3 +84,5 @@ function createListElement(text) {
   liElement.innerText = text;
   return liElement;
 }
+
+//window.onload=getComments;
