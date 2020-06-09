@@ -66,6 +66,8 @@ function test(){
 
 function getComments() {
   
+  document.getElementById("history").innerText = '';
+  
   const maxval = document.getElementById('max').value;
   fetch('/data?max='+maxval).then(response => response.text()).then((comments) => {
   document.getElementById("test").innerText = comments;
@@ -85,4 +87,4 @@ function createListElement(text) {
   return liElement;
 }
 
-//window.onload=getComments;
+window.onload=getComments;

@@ -58,8 +58,15 @@ public class DataServlet extends HttpServlet {
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
 
+    int maxComments = 10;
+
+    try {
     String getMax = request.getParameter("max");
-    int maxComments = Integer.parseInt(getMax);
+    maxComments = Integer.parseInt(getMax);
+    } catch (NumberFormatException e){
+    maxComments = 10;
+
+    }
 
 
     List<String> comments = new ArrayList<>();
