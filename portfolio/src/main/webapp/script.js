@@ -57,3 +57,37 @@ function getText() {
 }
 
 
+//wk3pt6
+
+//fetches comment array from data servlet and inserts comments into html
+function populateComments() {
+  
+  document.getElementById("history").innerText = '';
+  
+  const maxval = document.getElementById('max').value;
+  fetch('/data?max='+maxval).then(response => response.text()).then((comments) => {
+  comments = comments.replace("[","").replace("]","").split(",");
+  for (i = 0; i<comments.length; i++) {
+    document.getElementById("history").appendChild(createListElement(comments[i]));
+  }
+
+  });
+
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
+
+
+//calls doPost() in DeleteServlet which clears all comments from datastore
+function clearComments(){
+    const params = new URLSearchParams();
+    fetch('/delete-data',{method: 'POST', body: params});
+    document.getElementById("history").innerText = '';
+    
+}
+window.onload=populateComments;
