@@ -87,6 +87,7 @@ function createListElement(text) {
 function clearComments(){
     const params = new URLSearchParams();
     fetch('/delete-data',{method: 'POST', body: params});
+    document.getElementById("history").innerText = '';
     
 }
 window.onload=getComments;
