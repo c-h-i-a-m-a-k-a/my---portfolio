@@ -59,10 +59,6 @@ function getText() {
 
 //wk3pt6
 
-function test(){
-    document.getElementById('test').innerText= "text is showing";
-}
-
 
 function getComments() {
   
@@ -70,7 +66,6 @@ function getComments() {
   
   const maxval = document.getElementById('max').value;
   fetch('/data?max='+maxval).then(response => response.text()).then((comments) => {
-  document.getElementById("test").innerText = comments;
   comments = comments.replace("[","").replace("]","").split(",");
   for (i = 0; i<comments.length; i++) {
     document.getElementById("history").appendChild(createListElement(comments[i]));
@@ -87,4 +82,11 @@ function createListElement(text) {
   return liElement;
 }
 
+
+
+function clearComments(){
+    const params = new URLSearchParams();
+    fetch('/delete-data',{method: 'POST', body: params});
+    
+}
 window.onload=getComments;

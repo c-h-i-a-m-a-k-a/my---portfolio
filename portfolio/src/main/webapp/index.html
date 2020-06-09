@@ -65,7 +65,7 @@
         <p>Enter a maximum number of comments:</p>
 
             <input type = "number" name="max" id = "max">
-            <input type="submit" />
+            
 
         </form>
 
@@ -75,19 +75,17 @@
 
         <br/><br/>
         <br/><br/>
-
-        <button onclick="test()"> test </button>
-
-        <p id ="test"></p>
         <br/><br/>
 
         <ul id="history"></ul>
+
+        <button action="/delete-data" method="POST" onclick="clearComments()"> Clear the Comments </button>
+
         <br/><br/>
-        <!--
+
         <audio autoplay>
             <source src="./music/indexmusic.mp3" type = "audio/mpeg">
         </audio>
-        -->
 
   </body>
 </html>

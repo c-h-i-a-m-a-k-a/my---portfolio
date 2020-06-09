@@ -71,7 +71,6 @@ public class DataServlet extends HttpServlet {
 
     List<String> comments = new ArrayList<>();
     for (Entity entity : results.asList(FetchOptions.Builder.withLimit(maxComments))) {
-      System.out.println("Testing");
       String comment = (String) entity.getProperty("content");
       comments.add(comment);
 
