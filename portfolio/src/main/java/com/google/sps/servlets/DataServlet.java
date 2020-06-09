@@ -37,22 +37,6 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
-    /**
-
-    I don't know if we should delete the earlier parts
-
-    ArrayList<String> messages = new ArrayList<String>();
-    messages.add("Can you see me?");
-    messages.add("Does this text appear?");
-    messages.add("Are all the messages being displayed?");
-    
-    String json = convertToJsonUsingGson(messages);
-
-    response.setContentType("text/html;");
-    response.getWriter().println(json);
-    response.getWriter().println("Hello Chiamaka");
-
-    **/
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
@@ -63,10 +47,11 @@ public class DataServlet extends HttpServlet {
     try {
     String getMax = request.getParameter("max");
     maxComments = Integer.parseInt(getMax);
-    } catch (NumberFormatException e){
-    maxComments = 10;
+    } 
+    catch (NumberFormatException e) {
 
     }
+
 
 
     List<String> comments = new ArrayList<>();

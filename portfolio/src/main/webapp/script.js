@@ -59,8 +59,8 @@ function getText() {
 
 //wk3pt6
 
-
-function getComments() {
+//fetches comment array from data servlet and inserts comments into html
+function populateComments() {
   
   document.getElementById("history").innerText = '';
   
@@ -83,11 +83,11 @@ function createListElement(text) {
 }
 
 
-
+//calls doPost() in DeleteServlet which clears all comments from datastore
 function clearComments(){
     const params = new URLSearchParams();
     fetch('/delete-data',{method: 'POST', body: params});
     document.getElementById("history").innerText = '';
     
 }
-window.onload=getComments;
+window.onload=populateComments;

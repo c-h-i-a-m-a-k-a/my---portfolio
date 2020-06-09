@@ -64,14 +64,14 @@
 
         <p>Enter a maximum number of comments:</p>
 
-            <input type = "number" name="max" id = "max">
+            <input type = "number" name="max" id = "max" onchange ="populateComments()">
             
 
         </form>
 
         <br/><br/>
 
-        <button onclick="getComments()"> Refresh Comments </button>
+        <button onclick="populateComments()"> Refresh Comments </button>
 
         <br/><br/>
         <br/><br/>
