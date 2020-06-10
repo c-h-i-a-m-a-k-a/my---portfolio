@@ -19,6 +19,8 @@ import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Entity;
+import com.google.cloud.language.v1.Sentiment;
+import com.google.cloud.language.v1.Document;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.Query;
+import com.google.cloud.language.v1.LanguageServiceClient;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
@@ -57,7 +60,8 @@ public class DataServlet extends HttpServlet {
     List<String> comments = new ArrayList<>();
     for (Entity entity : results.asList(FetchOptions.Builder.withLimit(maxComments))) {
       String comment = (String) entity.getProperty("content");
-      comments.add(comment);
+      String commentWithScore = comment+String.valueOf(entity.getProperty("score"));
+      comments.add(commentWithScore);
 
     }
 
@@ -73,11 +77,19 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String input = request.getParameter("input-string");
 
+    Document doc =
+        Document.newBuilder().setContent(input).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    float score = sentiment.getScore();
+    languageService.close();
+
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("content", input);
     commentEntity.setProperty("timestamp", System.currentTimeMillis());
+    commentEntity.setProperty("score",score);
 
     datastore.put(commentEntity);
 
