@@ -55,27 +55,13 @@ public class DataServlet extends HttpServlet {
 
     }
 
-    List<Comment> comments = new ArrayList<>();
+    List<String> comments = new ArrayList<>();
     for (Entity entity : results.asList(FetchOptions.Builder.withLimit(maxComments))) {
-      /**
 
-      Need to find some way to define comment class and entity
-      before comments list is initialized
+      String comment = (String) entity.getProperty("content");
+      String commentWithScore = comment+"  "+String.valueOf(entity.getProperty("score"));
 
-      class Comment { 
-          public String content = (String) entity.getProperty("content");
-          public String commentScore = String.valueOf(entity.getProperty("score"));
-          public String time = (String) entity.getProperty("timestamp");
-      }
-      **/
-
-      //String comment = (String) entity.getProperty("content");
-      //String commentWithScore = comment+"  "+String.valueOf(entity.getProperty("score"));
-      
-      //Comment commentClass = Comment();
-      comments.add(entity.getProperty("commentClass"));
-
-      //comments.add(commentWithScore);
+      comments.add(commentWithScore);
 
     }
 
@@ -104,15 +90,6 @@ public class DataServlet extends HttpServlet {
     commentEntity.setProperty("content", input);
     commentEntity.setProperty("timestamp", System.currentTimeMillis());
     commentEntity.setProperty("score",score);
-
-    class Comment { 
-          public String content = (String) commentEntity.getProperty("content");
-          public String commentScore = String.valueOf(commentEntity.getProperty("score"));
-          public String time = (String) commentEntity.getProperty("timestamp");
-    }
-    Comment commentClass = Comment();
-
-    commentEntity.setProperty("commentClass",commentClass);
 
     datastore.put(commentEntity);
 
