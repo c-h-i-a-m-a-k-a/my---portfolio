@@ -18,6 +18,9 @@ import com.google.sps.TimeRange;
 import java.util.Iterator;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set; 
+import java.util.List;
+import java.util.ArrayList;
 
 public final class FindMeetingQuery {
 
@@ -26,19 +29,44 @@ public final class FindMeetingQuery {
     //throw new UnsupportedOperationException("TODO: Implement this method.");
     
     Iterator<Event> iterator = events.iterator();
-    Collection<TimeRange> answer = new HashSet<TimeRange>();
- 
+    List<TimeRange> answer = new ArrayList<TimeRange>();
+
+    System.out.println (request.getDuration());
+    System.out.println(TimeRange.WHOLE_DAY.duration());
+
+    if (events.isEmpty()) {
+
+        answer.add(TimeRange.WHOLE_DAY);
+
+    } else if (request.getDuration()> TimeRange.WHOLE_DAY.duration()) {
+
+    System.out.println("Request Duration too large");
+    
+    
+    } else {
+    
     while (iterator.hasNext()) {
     
     Event event = iterator.next();
+    
+    //System.out.println("The request attendees list is "+request.getAttendees());
+    //System.out.println("The event attendees list is "+event.getAttendees());
 
-    if (request.getAttendees() == event.getAttendees() && request.getDuration() == event.getWhen().duration()) {
+    //System.out.println("The request duration is "+request.getDuration());
+    //System.out.println("The event duration is "+event.getWhen().duration());
+    
+
+    //request.getAttendees() == event.getAttendees() &&
+    //request.getDuration() >= event.getWhen().duration()
+
+    if (request.getDuration() <= event.getWhen().duration()){
 
         answer.add(event.getWhen());
+    }
 
     }
 
-  }
+    }
     
 
   return answer;
