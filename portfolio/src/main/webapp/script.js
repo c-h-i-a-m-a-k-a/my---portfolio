@@ -90,4 +90,12 @@ function clearComments(){
     document.getElementById("history").innerText = '';
     
 }
+
+/** to be finished
+function translate(){
+   const lang = document.getElementById(lang);
+   const input = document.getElementById();
+   fetch('/translate?input-string='+input+'?languageCode='+lang).then(response => response.text()).
+}
+**/
 window.onload=populateComments;

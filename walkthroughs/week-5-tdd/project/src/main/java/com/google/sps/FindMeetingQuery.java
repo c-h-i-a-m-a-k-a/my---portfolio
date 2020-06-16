@@ -13,11 +13,35 @@
 // limitations under the License.
 
 package com.google.sps;
-
+import com.google.sps.Event;
+import com.google.sps.TimeRange;
+import java.util.Iterator;
 import java.util.Collection;
+import java.util.HashSet;
 
 public final class FindMeetingQuery {
+
+  
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    throw new UnsupportedOperationException("TODO: Implement this method.");
+    //throw new UnsupportedOperationException("TODO: Implement this method.");
+    
+    Iterator<Event> iterator = events.iterator();
+    Collection<TimeRange> answer = new HashSet<TimeRange>();
+ 
+    while (iterator.hasNext()) {
+    
+    Event event = iterator.next();
+
+    if (request.getAttendees() == event.getAttendees() && request.getDuration() == event.getWhen().duration()) {
+
+        answer.add(event.getWhen());
+
+    }
+
   }
+    
+
+  return answer;
+}
+
 }
