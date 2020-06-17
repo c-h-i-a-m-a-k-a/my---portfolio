@@ -31,10 +31,6 @@ public final class FindMeetingQuery {
     Iterator<Event> iterator = events.iterator();
     List<TimeRange> answer = new ArrayList<TimeRange>();
 
-    System.out.println (request.getDuration());
-    System.out.println(TimeRange.WHOLE_DAY.duration());
-    System.out.println(request.getDuration()>TimeRange.WHOLE_DAY.duration());
-
     
     if (request.getDuration()> TimeRange.WHOLE_DAY.duration()) {
 
@@ -66,9 +62,36 @@ public final class FindMeetingQuery {
         }
 
     }
-    
+
     else {
+
+    Event event1 = iterator.next();
+    Event event2 = iterator.next();
+
+    if (event1.getWhen().contains(event2.getWhen())){
+        answer.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY,event1.getWhen().start(),false));
+        answer.add(TimeRange.fromStartEnd(event1.getWhen().end(),TimeRange.END_OF_DAY+1,false));
+    }
+    else if (event2.getWhen().contains(event1.getWhen())){
+        answer.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY,event2.getWhen().start(),false));
+        answer.add(TimeRange.fromStartEnd(event2.getWhen().end(),TimeRange.END_OF_DAY+1,false));
+    }
+    else if (event1.getWhen().start()== TimeRange.START_OF_DAY && event2.getWhen().end()==TimeRange.END_OF_DAY){
+        
+        if ((TimeRange.fromStartEnd(event1.getWhen().end(),event2.getWhen().start(),false).duration())>= request.getDuration()) {
+            answer.add(TimeRange.fromStartEnd(event1.getWhen().end(),event2.getWhen().start(),false));
+        }
+
+    }
+    else if (event2.getWhen().start()== TimeRange.START_OF_DAY && event1.getWhen().end()==TimeRange.END_OF_DAY) {
+
+        if ((TimeRange.fromStartEnd(event2.getWhen().end(),event1.getWhen().start(),false).duration())>= request.getDuration()) {
+            answer.add(TimeRange.fromStartEnd(event2.getWhen().end(),event1.getWhen().start(),false));
+        }
+        
+    }
     
+    /**
     while (iterator.hasNext()) {
     
     Event event = iterator.next();
@@ -76,19 +99,10 @@ public final class FindMeetingQuery {
     //System.out.println("The request attendees list is "+request.getAttendees());
     //System.out.println("The event attendees list is "+event.getAttendees());
 
-    //System.out.println("The request duration is "+request.getDuration());
-    //System.out.println("The event duration is "+event.getWhen().duration());
-    
 
-    //request.getAttendees() == event.getAttendees() &&
-    //request.getDuration() >= event.getWhen().duration()
-
-    if (request.getDuration() <= event.getWhen().duration()){
-
-        answer.add(event.getWhen());
-    }
 
     }
+    **/
 
     }
     
