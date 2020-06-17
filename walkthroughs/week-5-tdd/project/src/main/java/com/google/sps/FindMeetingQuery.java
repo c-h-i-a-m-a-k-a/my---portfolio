@@ -33,17 +33,41 @@ public final class FindMeetingQuery {
 
     System.out.println (request.getDuration());
     System.out.println(TimeRange.WHOLE_DAY.duration());
+    System.out.println(request.getDuration()>TimeRange.WHOLE_DAY.duration());
 
-    if (events.isEmpty()) {
+    
+    if (request.getDuration()> TimeRange.WHOLE_DAY.duration()) {
+
+        System.out.println("Requested Duration too large");
+    
+    
+    } 
+    else if (events.isEmpty()) {
 
         answer.add(TimeRange.WHOLE_DAY);
 
-    } else if (request.getDuration()> TimeRange.WHOLE_DAY.duration()) {
+    } 
+    else if (events.size() == 1){
 
-    System.out.println("Request Duration too large");
+        Event event = iterator.next();
+
+        if (event.getWhen().start() == TimeRange.START_OF_DAY){
+            answer.add(TimeRange.fromStartEnd(event.getWhen().end(),TimeRange.END_OF_DAY+1,false));
+        }
+
+        else if (event.getWhen().end() == TimeRange.END_OF_DAY){
+            answer.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY,event.getWhen().start(),false));
+
+        }
+        else {
+            answer.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY,event.getWhen().start(),false));
+            answer.add(TimeRange.fromStartEnd(event.getWhen().end(),TimeRange.END_OF_DAY+1,false));
+
+        }
+
+    }
     
-    
-    } else {
+    else {
     
     while (iterator.hasNext()) {
     
